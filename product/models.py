@@ -18,7 +18,7 @@ class Product(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     catagory = models.ForeignKey(Catagory, on_delete=models.CASCADE)
-    image = models.ImageField()
+    image = models.ImageField(upload_to="image")
     price = models.DecimalField(decimal_places=2, max_digits=10)
     discount = models.DecimalField(decimal_places=2, max_digits=10)
     quantity = models.IntegerField()
@@ -28,4 +28,10 @@ class Product(models.Model):
 
 
     def __str__(self):
-        return self.title   
+        return self.title
+
+    def get_image_url(self):
+        if self.image:
+            return self.image.url
+        else:
+            return None
