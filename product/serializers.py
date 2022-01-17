@@ -1,5 +1,3 @@
-from dataclasses import field
-from venv import create
 from rest_framework.serializers import ModelSerializer
 
 from .models import Product
